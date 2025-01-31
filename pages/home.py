@@ -56,6 +56,9 @@ if selected_option == "抠图":
         list.append(output_path)
         if st.button("开始抠图"):
             koutu_f.koutu_fuction(list)
+            # 清空列表
+            file_paths.clear()
+            list.clear()
     else:
         st.write("请选择文件")
 
@@ -69,6 +72,8 @@ if selected_option == "图片压缩":
         list.append(output_path)
         if st.button("开始压缩"):
             compress_f.compress_fuction(list)
+            file_paths.clear()
+            list.clear()
     else:
         st.write("请选择文件")
 
