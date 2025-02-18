@@ -77,4 +77,10 @@ if selected_option == "图片压缩":
     else:
         st.write("请选择文件")
 
+if selected_option == "去水印":
+    st.write("敬请期待>_<")
+
+if selected_option == "超分放大":
+    st.write("敬请期待>_<")
+
 
