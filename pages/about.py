@@ -4,7 +4,7 @@ st.title("关于DaYePhotoStudio-2")
 st.write("版本：2.0.0")
 st.write("作者：DaYe")
 st.write("[DaYe博客](https://dyblog.online)")
-st.write("[Bilibili](https://space.bilibili.com/1847808902?spm_id_from=333.1007.0.0)")
+st.write("[Bilibili](https://space.bilibili.com/1847808902)")
 
 st.title("🎖 贡献者 Contributors")
 # 原有的贡献者链接和图片

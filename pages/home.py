@@ -3,6 +3,7 @@ import os
 
 from pages.tools import koutu_f
 from pages.tools import compress_f
+from pages.tools import transformer
 
 st.header("君子喻于义，小人喻于利。")
 
@@ -11,7 +12,7 @@ type=[
 ]
 
 uploaded_files = st.file_uploader("选择文件", type=type, accept_multiple_files=True)
-options = ["抠图","图片压缩","去水印", "超分放大",]
+options = ["抠图","图片压缩","去水印", "超分放大","格式转换"]
 selected_option = st.selectbox("选择功能", options)
 
 # 创建一个临时目录来保存上传的文件
@@ -83,4 +84,19 @@ if selected_option == "去水印":
 if selected_option == "超分放大":
     st.write("敬请期待>_<")
 
+if selected_option == "格式转换":
+    if uploaded_files:
+        output_path = st.text_input("输出路径", output_path)
+        st.write("选择的文件：", file_paths)
+        # 可供选择的格式
+        type = ["jpg", "jpeg", "png", "gif", "bmp", "tiff", "webp", "svg", "ico", "heic", "heif"]
+        selected_type_option = st.selectbox("选择格式", type)
+        st.write("输出路径：", output_path)
+        list = []
+        list.append(file_paths)
+        list.append(output_path)
+        list.append(selected_type_option)
+        if st.button("开始转换"):
+            transformer.transformer_fuction(list)
+            file_paths.clear()
 
