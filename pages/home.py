@@ -5,6 +5,7 @@ from pages.tools import koutu_f
 from pages.tools import compress_f
 from pages.tools import transformer
 from pages.tools import size_f
+from pages.tools import toSVG_f
 
 st.header("君子喻于义，小人喻于利。")
 
@@ -13,7 +14,7 @@ type=[
 ]
 
 uploaded_files = st.file_uploader("选择文件", type=type, accept_multiple_files=True)
-options = ["抠图","图片压缩","去水印", "超分放大","格式转换","批量改尺寸"]
+options = ["抠图","图片压缩","去水印", "超分放大","格式转换","批量改尺寸","位图转SVG"]
 selected_option = st.selectbox("选择功能", options)
 
 # 创建一个临时目录来保存上传的文件
@@ -119,3 +120,18 @@ if selected_option == "批量改尺寸":
             size_f.size_fuction(list)
             file_paths.clear()
             list.clear()
+
+if selected_option == "位图转SVG":
+    if uploaded_files:
+        output_path = st.text_input("输出路径", output_path) 
+        st.write("选择的文件：", file_paths)
+        st.write("输出路径：", output_path)
+        list = []
+        list.append(file_paths)
+        list.append(output_path)
+        if st.button("开始压缩"):
+            toSVG_f.toSVG_fuction(list)
+            file_paths.clear()
+            list.clear()
+    else:
+        st.write("请选择文件")
