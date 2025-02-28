@@ -2,3 +2,5 @@ test.py
 venv
 temp_uploads
 output
+__pycache__
+.u2net
