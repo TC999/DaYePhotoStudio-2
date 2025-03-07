@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 st.set_page_config(page_title="DaYe PhotoStudio", page_icon="logo.png", layout="centered", initial_sidebar_state="auto", menu_items=None)
 # 隐藏右上角的按钮
@@ -18,3 +19,7 @@ page4 = st.Page("pages/donate.py", title="❤️ 捐赠")
 
 pg = st.navigation([page1, page2, page3, page4])
 pg.run()
+
+# 检查并创建目录
+if not os.path.exists('.u2net'):
+    os.makedirs('.u2net')
