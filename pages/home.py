@@ -6,6 +6,7 @@ from pages.tools import compress_f
 from pages.tools import transformer
 from pages.tools import size_f
 from pages.tools import toSVG_f
+from pages.tools import turner
 
 st.header("君子喻于义，小人喻于利。")
 
@@ -14,7 +15,7 @@ type=[
 ]
 
 uploaded_files = st.file_uploader("选择文件", type=type, accept_multiple_files=True)
-options = ["抠图","图片压缩","去水印", "超分放大","格式转换","批量改尺寸","位图转SVG"]
+options = ["抠图","图片压缩","去水印", "超分放大","格式转换","批量改尺寸","位图转SVG","图像旋转"]
 selected_option = st.selectbox("选择功能", options)
 
 # 创建一个临时目录来保存上传的文件
@@ -135,3 +136,20 @@ if selected_option == "位图转SVG":
             list.clear()
     else:
         st.write("请选择文件")
+
+if selected_option == "图像旋转":
+    if uploaded_files:
+        output_path = st.text_input("输出路径", output_path)
+        st.write("选择的文件：", file_paths)
+        # 可供选择的模式
+        type = ["左转90度", "右转90度","180度", "水平翻转", "垂直翻转"]
+        selected_type_option = st.selectbox("选择模式", type)
+        st.write("输出路径：", output_path)
+        list = []
+        list.append(file_paths)
+        list.append(output_path)
+        list.append(selected_type_option)
+        if st.button("开始转换"):
+            turner.turnimg_fuction(list)
+            file_paths.clear()
+            list.clear()
