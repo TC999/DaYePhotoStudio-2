@@ -15,15 +15,21 @@ def koutu_fuction(list):
     user_folder = os.path.join("C:\\Users", username)
     # 拼接.u2net文件夹的路径
     u2net_folder = os.path.join(user_folder, ".u2net")
+    # 获取当前工作目录下的.u2net文件夹路径
+    current_folder = os.path.join(os.getcwd(), ".u2net")
     # 判断.u2net文件夹是否存在
     if not os.path.exists(u2net_folder):
-        # 创建.u2net文件夹
-        os.mkdir(u2net_folder)
-        # mklink到程序目录下的.u2net文件夹
-        # os.system("mklink /D " + u2net_folder + " .u2net")
-        # 将.u2net文件夹下的所有文件复制到user/username/.u2net文件夹下
-        os.system("xcopy .u2net " + u2net_folder + " /e /h /i /y")
-
+        #mklink /d C:\Users\Administrator\.u2net D:\Files\PythonFiles\DPS\.u2net
+        # 执行mklink命令创建符号链接
+        command = f'mklink /d {u2net_folder} {current_folder}'
+        result = os.system(command)
+        if result == 0:
+            print("符号链接创建成功！")
+        else:
+            print("符号链接创建失败！")
+    else:
+        print(".u2net文件夹已存在，无需创建符号链接。")
+        
     files = list[0]
     mode = list[1]
     way = list[2]

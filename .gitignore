@@ -4,3 +4,5 @@ temp_uploads
 output
 __pycache__
 .u2net
+temp_output_path.txt
+temp_file_paths.json
