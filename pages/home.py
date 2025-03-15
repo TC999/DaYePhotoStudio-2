@@ -11,6 +11,7 @@ from pages.tools import turner
 from pages.tools import pluser
 from pages.tools import gifdevider
 from pages.tools import gifmaker
+from pages.tools import ccuter
 
 st.header("君子喻于义，小人喻于利。")
 
@@ -325,7 +326,7 @@ if selected_option == "合成GIF":
         list = []
         list.append(file_paths)
         list.append(output_path)
-        if st.button("开始拆分"):
+        if st.button("开始合成"):
             gifmaker.makegif_fuction(list)
             file_paths.clear()
             list.clear()
@@ -333,4 +334,26 @@ if selected_option == "合成GIF":
         st.write("请选择文件")
 
 if selected_option == "圆角裁剪":
-    st.write("敬请期待>_<")
+    if uploaded_files:
+        # 选择圆角半径
+        radii = st.number_input("请输入圆角半径", min_value=0, max_value=500, value=10) 
+        if st.button("选择输出路径"):
+            output_path = select_output_folder()
+        output_path = get_output_path()
+        if output_path == "":
+            output_path = "output"
+            st.write("输出路径", output_path)  
+        else:
+            pass  
+        st.write("选择的文件：", file_paths)
+        st.write("输出路径：", output_path)
+        list = []
+        list.append(file_paths)
+        list.append(output_path)
+        list.append(radii)
+        if st.button("开始裁剪"):
+            ccuter.ccut_fuction(list)
+            file_paths.clear()
+            list.clear()
+    else:
+        st.write("请选择文件")
