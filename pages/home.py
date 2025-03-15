@@ -9,6 +9,7 @@ from pages.tools import size_f
 from pages.tools import toSVG_f
 from pages.tools import turner
 from pages.tools import pluser
+from pages.tools import gifdevider
 
 st.header("君子喻于义，小人喻于利。")
 
@@ -17,7 +18,7 @@ type=[
 ]
 
 uploaded_files = st.file_uploader("选择文件", type=type, accept_multiple_files=True)
-options = ["抠图","图片压缩","去水印", "超分放大","格式转换","批量改尺寸","位图转SVG","图像旋转","批量重命名","图像纵向拼接"]
+options = ["抠图","图片压缩","去水印", "超分放大","格式转换","批量改尺寸","位图转SVG","图像旋转","批量重命名","图像纵向拼接","拆分GIF","合成GIF","圆角裁剪"]
 selected_option = st.selectbox("选择功能", options)
 
 # 创建一个临时目录来保存上传的文件
@@ -283,3 +284,32 @@ if selected_option == "图像纵向拼接":
             list.clear()
     else:
         st.write("请选择文件")
+
+if selected_option == "拆分GIF":
+    if uploaded_files:
+        #output_path = st.text_input("输出路径", output_path) 
+        if st.button("选择输出路径"):
+            output_path = select_output_folder()
+        output_path = get_output_path()
+        if output_path == "":
+            output_path = "output"
+            st.write("输出路径", output_path)  
+        else:
+            pass  
+        st.write("选择的文件：", file_paths)
+        st.write("输出路径：", output_path)
+        list = []
+        list.append(file_paths)
+        list.append(output_path)
+        if st.button("开始拆分"):
+            gifdevider.devidegif_fuction(list)
+            file_paths.clear()
+            list.clear()
+    else:
+        st.write("请选择文件")
+
+if selected_option == "合成GIF":
+    st.write("敬请期待>_<")
+
+if selected_option == "圆角裁剪":
+    st.write("敬请期待>_<")
