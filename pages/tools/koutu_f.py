@@ -58,6 +58,8 @@ def koutu_fuction(list):
             elif way == "抠图并替换背景色":
                 # 使用模型抠图,并替换背景色（#000000）
                 # 先将背景色转换为RGBA格式
+                if isinstance(color, tuple):
+                    color = "#{:02x}{:02x}{:02x}".format(*color)
                 color = color.lstrip('#')
                 color = tuple(int(color[i:i+2], 16) for i in (0, 2, 4))
                 color = color + (255,)
