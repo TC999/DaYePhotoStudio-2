@@ -75,6 +75,23 @@ def get_output_path():
 if selected_option == "抠图":
     if uploaded_files:
         u2net_files = [os.path.splitext(f)[0] for f in os.listdir('.u2net') if os.path.isfile(os.path.join('.u2net', f))]
+        st.markdown("""
+        模型说明
+                    
+        u2net：用于一般用例的预训练模型。
+                    
+        u2netp：u2net模型的轻量级版本。
+                    
+        u2net_human_seg：用于人工分割的预训练模型。
+                    
+        u2net_cloth_seg：从人类肖像中用于布料解析的预训练模型。这里的衣服被解析为3类：上半身，下半身和全身。
+        
+        silueta：与u2net相同，但大小减少到43Mb。
+        
+        isnet-general-use：用于一般用例的新预训练模型。
+        
+        isnet-anime：动漫角色的高精度分割。
+        """)
         selected_mode_option = st.selectbox("选择模型", u2net_files)
         mode = st.selectbox("选择抠图模式", ["仅抠图", "抠图并替换背景色","抠图并替换背景图"])
         # 调色板

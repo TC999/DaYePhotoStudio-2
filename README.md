@@ -1,47 +1,77 @@
-# DaYePhotoStudio-2
+<div align=center>
+<img src="logo.png" width="150" height="150">
 
-DaYePhotoStudio-2 是一个基于 Python 的项目，旨在增强和处理照片。它包括添加 SVG 功能、批量调整大小和格式转换等功能。
+<h1>DaYe PhotoStudio-2</h1>
 
-## 特点
-- 添加 SVG 功能
-- 批量调整图像大小
-- 转换图像格式
+<a href="https://dyblog.online/"><img src="https://img.shields.io/badge/Author-DaYe-orange" alt="Author" /></a>
+<img src="https://img.shields.io/github/languages/count/darkmatter2048/DaYePhotoStudio-2" alt="languages-count" />
+<img src="https://img.shields.io/github/languages/top/darkmatter2048/DaYePhotoStudio-2?color=yellow" alt="languages-top" />
+<img src="https://img.shields.io/github/last-commit/darkmatter2048/DaYePhotoStudio-2" alt="last-commit" />
 
-<!--## 安装
-要安装所需的依赖项，请运行：
-```sh
-pip install -r requirements.txt
-```-->
+<h3>完全开源免费的图像处理软件！</h3>
+</div>
 
-## 使用方法（从源码运行
-1. 克隆仓库：
-    ```sh
-      git clone https://github.com/darkmatter2048/DaYePhotoStudio-2.git
-    ```
-2. 进入项目目录：
-    ```sh
-      cd DaYePhotoStudio-2
-    ```
-3. 安装依赖项：
-    ```sh
-      pip install -r requirements.txt
-    ```
-4. 运行主脚本：
-    ```sh
-      python launcher.py
-    ```
+## 🎨 运行截图 GUI
+![show](resource/show.png)
 
-## 贡献
-要为此项目做出贡献，请[复刻(Fork)](https://github.com/DaYePhotoStudio-2/DaYePhotoStudio-2/fork)此仓库并创建拉取请求(pull request)。你也可以通过 [议题页面](https://github.com/darkmatter2048/DaYePhotoStudio-2/issues) 报告问题或建议功能。
+<details>
+<summary>
+功能列表 🧾
+</summary>
 
-## 许可证
-该项目使用 [其他](LICENSE) 许可证。
+- [x] 扣图
+- [x] 图片压缩
+- [ ] 表格识别
+- [ ] 清晰放大
+- [x] 位图转矢量
+- [x] 修改尺寸
+- [ ] 批量重命名
+- [x] 格式转换
+- [x] 拆分GIF
+- [x] 合成GIF
+- [ ] 批量打印
+- [x] 图片拼接
+- [x] 图像旋转
+- [x] 圆角裁剪
 
-## 鸣谢
-- [darkmatter2048](https://github.com/darkmatter2048)：项目作者
+</details>
 
-### 所有贡献者
+## 🖥 支持的操作系统
+
+- <img src="resource/windows.svg" width="16" height="16" />Windows 10,11
+
+
+## 📦 下载
+<a href="https://pan.quark.cn/s/b42aabae0e5f"><img src="resource/2ms.png"></img></a>
+
+## 📝未来计划 Future Ideas
+
+- [ ] 增加局域网网盘功能
+- [ ] 完善设置功能
+- [ ] 支持更多语言
+
+## 🎖 贡献者 Contributors
 
 <a href="https://github.com/darkmatter2048/DaYePhotoStudio-2/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=darkmatter2048/DaYePhotoStudio-2" />
 </a>
+
+## 🤝支持DaYePhotoStudio-2的开发
+
+[<img src="https://wc.dyblog.online/images/d.png" alt="Develop Image" style="width: 200px;"/>](https://dyblog.online/donate)
+
+## ⭐ 星标历史 Star History
+
+<a href="https://star-history.com/#darkmatter2048/DaYePhotoStudio-2&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=darkmatter2048/DaYePhotoStudio-2&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=darkmatter2048/DaYePhotoStudio-2&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=darkmatter2048/DaYePhotoStudio-2&type=Date" />
+ </picture>
+</a>
+
+## Copyright & License ⚖
+
+Copyright © 2021.DaYe 
+
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href=#>DaYePhotoStudio-2</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.dyblog.online/">DaYe</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
