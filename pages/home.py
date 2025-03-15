@@ -10,6 +10,7 @@ from pages.tools import toSVG_f
 from pages.tools import turner
 from pages.tools import pluser
 from pages.tools import gifdevider
+from pages.tools import gifmaker
 
 st.header("君子喻于义，小人喻于利。")
 
@@ -309,7 +310,27 @@ if selected_option == "拆分GIF":
         st.write("请选择文件")
 
 if selected_option == "合成GIF":
-    st.write("敬请期待>_<")
+    if uploaded_files:
+        #output_path = st.text_input("输出路径", output_path) 
+        if st.button("选择输出路径"):
+            output_path = select_output_folder()
+        output_path = get_output_path()
+        if output_path == "":
+            output_path = "output"
+            st.write("输出路径", output_path)  
+        else:
+            pass  
+        st.write("选择的文件：", file_paths)
+        st.write("输出路径：", output_path)
+        list = []
+        list.append(file_paths)
+        list.append(output_path)
+        if st.button("开始拆分"):
+            gifmaker.makegif_fuction(list)
+            file_paths.clear()
+            list.clear()
+    else:
+        st.write("请选择文件")
 
 if selected_option == "圆角裁剪":
     st.write("敬请期待>_<")
