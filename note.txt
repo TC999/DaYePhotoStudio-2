@@ -1,0 +1,9 @@
+PyInstaller: 5.13.2 打包后需要复制以下文件夹到程序目录
+streamlit
+streamlit-1.40.1.dist-info
+wx
+rembg
+pooch
+cv2
+onnxruntime
+pymatting
