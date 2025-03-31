@@ -30,23 +30,24 @@ jobs:
           uv venv
           .venv\Scripts\activate
           uv pip install -r requirements.txt -U pyinstaller==5.13.2
-          pyinstaller -D -i icon.ico launcher.py
+          uv run pyinstaller -D -i icon.ico launcher.py
+
       - name: 移动依赖
         run: |
           cd .venv\Lib\site-packages
-          copy streamlit ..\..\..\dist\launcher\streamlit
-          copy streamlit-1.40.1.dist-info ..\..\..\dist\launcher\streamlit-1.40.1.dist-info
-          copy wx ..\..\..\dist\launcher\wx
-          copy rembg ..\..\..\dist\launcher\rembg
-          copy pooch ..\..\..\dist\launcher\pooch
-          copy cv2 ..\..\..\dist\launcher\cv2
-          copy onnxruntime ..\..\..\dist\launcher\onnxruntime
-          copy pymatting ..\..\..\dist\launcher\pymatting
+          mv streamlit ..\..\..\dist\launcher\streamlit
+          mv streamlit-1.40.1.dist-info ..\..\..\dist\launcher\streamlit-1.40.1.dist-info
+          mv wx ..\..\..\dist\launcher\wx
+          mv rembg ..\..\..\dist\launcher\rembg
+          mv pooch ..\..\..\dist\launcher\pooch
+          mv cv2 ..\..\..\dist\launcher\cv2
+          mv onnxruntime ..\..\..\dist\launcher\onnxruntime
+          mv pymatting ..\..\..\dist\launcher\pymatting
 
       - name: 移动页面
         run: |
-          copy app.py dist\launcher\app.py
-          copy pages dist\launcher\pages
+          mv app.py dist\launcher\app.py
+          mv pages dist\launcher\pages
 
       - name: 打包上传
         uses: actions/upload-artifact@v4.6.2
