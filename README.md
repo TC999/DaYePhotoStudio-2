@@ -72,9 +72,9 @@
 
 2. 创建并激活虚拟环境
 ```bash
-  uv venv
-  # Windows
-  .\.venv\Scripts\activate
+uv venv
+# Windows
+.\.venv\Scripts\activate
 ```
 
 <!--
