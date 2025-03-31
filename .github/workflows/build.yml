@@ -76,7 +76,7 @@ jobs:
 
       - name: Windows 压缩
         run: |
-          zip -r DaYePhotoStudio-2.zip artifacts/DaYePhotoStudio-2
+          cd artifacts && zip -r ../DaYePhotoStudio-2.zip DaYePhotoStudio-2
 
       - name: 发行
         uses: softprops/action-gh-release@v2
