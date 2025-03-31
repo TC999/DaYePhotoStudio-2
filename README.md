@@ -44,6 +44,53 @@
 ## 📦 下载
 <a href="https://pan.quark.cn/s/b42aabae0e5f"><img src="resource/2ms.png"></img></a>
 
+## 本地运行
+首先确保你的电脑上已经安装了Python3.8+
+
+克隆仓库：
+```
+  git clone https://github.com/darkmatter2048/DaYePhotoStudio-2.git
+```
+
+安装依赖：
+```
+  pip install -r requirements.txt
+```
+
+运行，稍后会使用默认浏览器弹出一个新页面：
+```
+  python launcher.py
+```
+
+## 📦 打包
+
+这里推荐使用 uv 创建虚拟环境，然后安装依赖，最后使用 PyInstaller 打包。
+
+安装 uv：
+```
+  pip install uv
+```
+
+激活虚拟环境：
+```
+  uv venv
+  .venv\Scripts\activate
+```
+安装依赖及 PyInstaller：
+```
+  uv pip install -r requirements.txt -U pyinstaller
+```
+
+编译：
+```
+  uv run pyinstaller -D -i icon.ico launcher.py
+```
+
+编译完成后会在 dist\launcher 文件夹下生成可执行文件。
+
+移动依赖，参照[note.txt](note.txt)。
+
+将 app.py 以及 pages 文件夹移动到 dist\launcher 文件夹下，完成编译
 ## 📝未来计划 Future Ideas
 
 - [ ] 增加局域网网盘功能
@@ -72,6 +119,6 @@
 
 ## Copyright & License ⚖
 
-Copyright © 2021.DaYe 
+Copyright © 2021.DaYe
 
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href=#>DaYePhotoStudio-2</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.dyblog.online/">DaYe</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
