@@ -1,0 +1,50 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: 编译
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: 拉取仓库
+      uses: actions/checkout@v4
+    - name: 设置 Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: 安装 uv
+      run: |
+        python -m pip install --upgrade pip
+        pip install uv
+    
+    - name: 虚拟环境 && 编译
+      run: |
+        uv venv
+        .venv\Scripts\activate
+        uv pip install -r requirements.txt -U pyinstaller==5.13.2
+        pyinstaller -D -i icon.ico launcher.py
+    - name: 移动文件
+      run: |
+        cd .venv\Lib\site-packages
+        copy streamlit ..\..\..\dist\launcher\streamlit
+        copy streamlit-1.40.1.dist-info ..\..\..\dist\launcher\streamlit-1.40.1.dist-info
+        copy wx ..\..\..\dist\launcher\wx
+        copy rembg ..\..\..\dist\launcher\rembg
+        copy pooch ..\..\..\dist\launcher\pooch
+        copy cv2 ..\..\..\dist\launcher\cv2
+        copy onnxruntime ..\..\..\dist\launcher\onnxruntime
+        copy pymatting ..\..\..\dist\launcher\pymatting
+    - name: 打包上传
+      uses: actions/upload-artifact@v4.6.2
+      with:
+        name: DaYePhotoStudio-2
+        path: dist\launcher
