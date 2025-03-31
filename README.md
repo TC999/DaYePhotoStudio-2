@@ -45,52 +45,61 @@
 <a href="https://pan.quark.cn/s/b42aabae0e5f"><img src="resource/2ms.png"></img></a>
 
 ## 本地运行
-首先确保你的电脑上已经安装了Python3.8+
+环境要求：Python 3.8+
 
-克隆仓库：
-```
+1. 克隆仓库
+```bash
   git clone https://github.com/darkmatter2048/DaYePhotoStudio-2.git
 ```
 
-安装依赖：
-```
+2. 安装依赖
+```bash
   pip install -r requirements.txt
 ```
 
-运行，稍后会使用默认浏览器弹出一个新页面：
-```
+3. 启动应用（自动通过默认浏览器打开）
+```bash
   python launcher.py
 ```
 
-## 📦 打包
+## 📦 应用打包
+推荐使用高性能虚拟环境工具 **uv**
 
-这里推荐使用 uv 创建虚拟环境，然后安装依赖，最后使用 PyInstaller 打包。
-
-安装 uv：
-```
+1. 安装工具链
+```bash
   pip install uv
 ```
 
-激活虚拟环境：
-```
+2. 创建并激活虚拟环境
+```bash
   uv venv
-  .venv\Scripts\activate
-```
-安装依赖及 PyInstaller：
-```
-  uv pip install -r requirements.txt -U pyinstaller
+  # Windows
+  .\.venv\Scripts\activate
 ```
 
-编译：
+<!--
+# macOS/Linux
+source .venv/bin/activate
+-->
+
+3. 安装打包依赖
+```bash
+  uv pip install -r requirements.txt -U pyinstaller==5.13.2
 ```
+
+4. 生成可执行文件
+```bash
   uv run pyinstaller -D -i icon.ico launcher.py
 ```
 
-编译完成后会在 dist\launcher 文件夹下生成可执行文件。
+5. 部署资源文件
+将以下内容手动复制至 `dist/launcher` 目录：
+- `app.py`
+- `pages` 目录
+- 其他依赖文件（详见 [note.txt](note.txt)）
 
-移动依赖，参照[note.txt](note.txt)。
+生成的可执行文件位于 `dist/launcher` 目录
 
-将 app.py 以及 pages 文件夹移动到 dist\launcher 文件夹下，完成编译
 ## 📝未来计划 Future Ideas
 
 - [ ] 增加局域网网盘功能
