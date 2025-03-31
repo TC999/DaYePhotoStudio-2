@@ -9,10 +9,8 @@ on:
       release:
         description: "是否发行"
         type: boolean
-        required: true
       tag:
         description: "版本号"
-        required: true
         default: vx.x.x
 
 permissions:
