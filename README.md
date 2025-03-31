@@ -44,6 +44,62 @@
 ## 📦 下载
 <a href="https://pan.quark.cn/s/b42aabae0e5f"><img src="resource/2ms.png"></img></a>
 
+## 本地运行
+环境要求：Python 3.8+
+
+1. 克隆仓库
+```bash
+  git clone https://github.com/darkmatter2048/DaYePhotoStudio-2.git
+```
+
+2. 安装依赖
+```bash
+  pip install -r requirements.txt
+```
+
+3. 启动应用（自动通过默认浏览器打开）
+```bash
+  python launcher.py
+```
+
+## 📦 应用打包
+推荐使用高性能虚拟环境工具 **uv**
+
+1. 安装工具链
+```bash
+  pip install uv
+```
+
+2. 创建并激活虚拟环境
+```bash
+uv venv
+# Windows
+.\.venv\Scripts\activate
+```
+
+<!--
+# macOS/Linux
+source .venv/bin/activate
+-->
+
+3. 安装打包依赖
+```bash
+  uv pip install -r requirements.txt -U pyinstaller==5.13.2
+```
+
+4. 生成可执行文件
+```bash
+  uv run pyinstaller -D -i icon.ico launcher.py
+```
+
+5. 部署资源文件
+将以下内容手动复制至 `dist/launcher` 目录：
+- `app.py`
+- `pages` 目录
+- 其他依赖文件（详见 [note.txt](note.txt)）
+
+生成的可执行文件位于 `dist/launcher` 目录
+
 ## 📝未来计划 Future Ideas
 
 - [ ] 增加局域网网盘功能
@@ -72,6 +128,6 @@
 
 ## Copyright & License ⚖
 
-Copyright © 2021.DaYe 
+Copyright © 2021.DaYe
 
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href=#>DaYePhotoStudio-2</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.dyblog.online/">DaYe</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
