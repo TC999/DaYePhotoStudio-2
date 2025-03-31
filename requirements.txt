@@ -3,3 +3,7 @@ rembg==2.0.61
 streamlit==1.40.1
 onnxruntime==1.19.2
 wxPython==4.2.2
+streamlit
+llvmlite
+numba
+pymatting
