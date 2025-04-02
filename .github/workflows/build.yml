@@ -18,6 +18,7 @@ permissions:
 
 jobs:
   windows-build:
+    name: Windows 编译
     runs-on: windows-latest
 
     steps:
@@ -63,6 +64,7 @@ jobs:
           path: dist\launcher
 
   release:
+    name: 发行
     if: ${{ inputs.release }}
     runs-on: ubuntu-latest
     needs: [windows-build]

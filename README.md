@@ -44,7 +44,11 @@
 ## 📦 下载
 <a href="https://pan.quark.cn/s/b42aabae0e5f"><img src="resource/2ms.png"></img></a>
 
-## 本地运行
+## 本地运行(Windows)
+> [!NOTE]
+>
+> 如果你使用的是 Linux 系统，请查看 [Linux 使用说明](Linux.md)
+
 环境要求：Python 3.8+
 
 1. 克隆仓库
