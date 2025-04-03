@@ -34,7 +34,7 @@ jobs:
           source .venv/bin/activate
           uv pip install wxPython-4.2.2-cp310-cp310-linux_x86_64.whl
           uv pip install -r requirements.txt -U pyinstaller
-          uv run pyinstaller -D -i icon.ico launcher.py
+          uv run pyinstaller -D launcher.py
 
       - name: 移动依赖
         run: |
