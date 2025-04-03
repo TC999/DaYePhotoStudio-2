@@ -1,0 +1,60 @@
+name: Linux 编译测试
+
+on:
+  workflow_dispatch:
+
+jobs:
+  windows-build:
+    name: Linux 编译
+    runs-on: ubnuntu-20.04
+
+    steps:
+      - name: 拉取仓库
+        uses: actions/checkout@v4
+      - name: 设置 Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10.0"
+      - name: 安装 uv
+        run: |
+          python -m pip install --upgrade pip
+          pip install uv
+
+      - name: wxPython 安装
+        run: |
+          sudo apt-get update
+          sudo apt-get install libgtk-3-dev
+          sudo apt-get install libjpeg-dev libtiff-dev libpng-dev libexpat1-dev libpcre3-dev
+          export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:$PKG_CONFIG_PATH
+          wget "https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-20.04/wxPython-4.2.2-cp310-cp310-linux_x86_64.whl"
+
+      - name: 虚拟环境 && 编译
+        run: |
+          uv venv
+          source .venv/bin/activate
+          uv pip install wxPython-4.2.2-cp310-cp310-linux_x86_64.whl
+          uv pip install -r requirements.txt -U pyinstaller==5.13.2
+          uv run pyinstaller -D -i icon.ico launcher.py
+
+      - name: 移动依赖
+        run: |
+          cd .venv\Lib\site-packages
+          mv streamlit ..\..\..\dist\launcher\streamlit
+          mv streamlit-1.40.1.dist-info ..\..\..\dist\launcher\streamlit-1.40.1.dist-info
+          mv wx ..\..\..\dist\launcher\wx
+          mv rembg ..\..\..\dist\launcher\rembg
+          mv pooch ..\..\..\dist\launcher\pooch
+          mv cv2 ..\..\..\dist\launcher\cv2
+          mv onnxruntime ..\..\..\dist\launcher\onnxruntime
+          mv pymatting ..\..\..\dist\launcher\pymatting
+
+      - name: 移动页面
+        run: |
+          mv app.py dist\launcher\app.py
+          mv pages dist\launcher\pages
+
+      - name: 打包上传
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: DaYePhotoStudio-2
+          path: dist\launcher
