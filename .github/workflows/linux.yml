@@ -6,7 +6,7 @@ on:
 jobs:
   windows-build:
     name: Linux 编译
-    runs-on: ubnuntu-20.04
+    runs-on: ubuntu-20.04
 
     steps:
       - name: 拉取仓库
