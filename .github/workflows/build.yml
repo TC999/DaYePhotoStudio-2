@@ -91,10 +91,10 @@ jobs:
           wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net_cloth_seg.onnx
           wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net_human_seg.onnx
           wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2netp.onnx
-          zip -r ../models.zip . 
 
       - name: 完整版压缩
         run: |
+          zip -r models.zip .u2net
           mv .u2net artifacts/DaYePhotoStudio-2/.u2net
           cd artifacts && zip -r ../DaYePhotoStudio-2-full.zip DaYePhotoStudio-2
 
