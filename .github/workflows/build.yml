@@ -76,9 +76,20 @@ jobs:
         with:
           path: artifacts
 
-      - name: Windows 压缩
+      - name: Windows 压缩（仅程序本体）
         run: |
           cd artifacts && zip -r ../DaYePhotoStudio-2.zip DaYePhotoStudio-2
+
+      - name: 下载模型并压缩
+        run: |
+          cd artifacts/DaYePhotoStudio-2
+          mkdir .u2net
+          sh ../../model.sh
+          zip -r ../../models.zip .u2net
+
+      - name: 模型压缩
+        run: |
+          cd artifacts && zip -r ../DaYePhotoStudio-2-full.zip DaYePhotoStudio-2
 
       - name: 发行
         uses: softprops/action-gh-release@v2
@@ -89,3 +100,5 @@ jobs:
           make_latest: true
           files: |
             DaYePhotoStudio-2.zip
+            DaYePhotoStudio-2-full.zip
+            models.zip
