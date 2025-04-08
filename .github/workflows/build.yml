@@ -77,12 +77,11 @@ jobs:
           path: artifacts
 
       - name: Windows 压缩（仅程序本体）
-        run: |
+        run: 
           cd artifacts && zip -r ../DaYePhotoStudio-2.zip DaYePhotoStudio-2
 
       - name: 下载模型并压缩
         run: |
-          mkdir .u2net
           sh ./model.sh
           zip -r models.zip .u2net
 
