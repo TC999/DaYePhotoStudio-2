@@ -63,24 +63,11 @@ jobs:
           name: DaYePhotoStudio-2
           path: dist\launcher
 
-  release:
-    name: 发行
-    if: ${{ inputs.release }}
+  models:
+    name: 模型下载
     runs-on: ubuntu-latest
-    needs: [windows-build]
-    permissions:
-      contents: write
     steps:
-      - name: 下载附件
-        uses: actions/download-artifact@v4
-        with:
-          path: artifacts
-
-      - name: Windows 压缩（仅程序本体）
-        run: 
-          cd artifacts && zip -r ../DaYePhotoStudio-2.zip DaYePhotoStudio-2
-
-      - name: 下载模型并压缩
+      - name: 下载模型
         run: |
           mkdir .u2net
           cd .u2net
@@ -92,10 +79,37 @@ jobs:
           wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net_human_seg.onnx
           wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2netp.onnx
 
+      - name: 打包上传
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: models
+          path: .u2net
+
+  release:
+    name: 发行
+    if: ${{ inputs.release }}
+    runs-on: ubuntu-latest
+    needs: [windows-build, models]
+    permissions:
+      contents: write
+    steps:
+      - name: 下载附件
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Windows 压缩（仅程序本体）
+        run: cd artifacts && zip -r ../DaYePhotoStudio-2.zip DaYePhotoStudio-2
+
+      - name: 模型包
+        run: |
+          cd artifacts
+          mv models .u2net
+          zip -r ../models.zip .u2net
+
       - name: 完整版压缩
         run: |
-          zip -r models.zip .u2net
-          mv .u2net artifacts/DaYePhotoStudio-2/.u2net
+          mv artifacts/.u2net artifacts/DaYePhotoStudio-2/.u2net
           cd artifacts && zip -r ../DaYePhotoStudio-2-full.zip DaYePhotoStudio-2
 
       - name: 发行
