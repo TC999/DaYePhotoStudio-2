@@ -91,7 +91,7 @@ jobs:
           wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net_cloth_seg.onnx
           wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net_human_seg.onnx
           wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2netp.onnx
-          zip -r models.zip . -i .u2net
+          zip -r ../models.zip . 
 
       - name: 完整版压缩
         run: |
