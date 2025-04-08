@@ -69,8 +69,8 @@ jobs:
     steps:
       - name: 下载模型
         run: |
-          mkdir .u2net
-          cd .u2net
+          mkdir models
+          cd models
           wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/isnet-anime.onnx
           wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/isnet-general-use.onnx
           wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/silueta.onnx
@@ -83,7 +83,7 @@ jobs:
         uses: actions/upload-artifact@v4.6.2
         with:
           name: models
-          path: .u2net
+          path: models
 
   release:
     name: 发行
