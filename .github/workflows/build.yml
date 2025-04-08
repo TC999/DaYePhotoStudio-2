@@ -82,13 +82,13 @@ jobs:
 
       - name: 下载模型并压缩
         run: |
-          cd artifacts/DaYePhotoStudio-2
           mkdir .u2net
-          sh ../../model.sh
-          zip -r ../../models.zip .u2net
+          sh ./model.sh
+          zip -r models.zip .u2net
 
-      - name: 模型压缩
+      - name: 完整版压缩
         run: |
+          mv .u2net artifacts/DaYePhotoStudio-2/.u2net
           cd artifacts && zip -r ../DaYePhotoStudio-2-full.zip DaYePhotoStudio-2
 
       - name: 发行
