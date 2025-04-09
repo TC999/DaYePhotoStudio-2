@@ -63,11 +63,33 @@ jobs:
           name: DaYePhotoStudio-2
           path: dist\launcher
 
+  models:
+    name: 模型下载
+    runs-on: ubuntu-latest
+    steps:
+      - name: 下载模型
+        run: |
+          mkdir models
+          cd models
+          wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/isnet-anime.onnx
+          wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/isnet-general-use.onnx
+          wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/silueta.onnx
+          wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net.onnx
+          wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net_cloth_seg.onnx
+          wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net_human_seg.onnx
+          wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2netp.onnx
+
+      - name: 打包上传
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: models
+          path: models
+
   release:
     name: 发行
     if: ${{ inputs.release }}
     runs-on: ubuntu-latest
-    needs: [windows-build]
+    needs: [windows-build, models]
     permissions:
       contents: write
     steps:
@@ -76,9 +98,19 @@ jobs:
         with:
           path: artifacts
 
-      - name: Windows 压缩
+      - name: Windows 压缩（仅程序本体）
+        run: cd artifacts && zip -r ../DaYePhotoStudio-2.zip DaYePhotoStudio-2
+
+      - name: 模型包
         run: |
-          cd artifacts && zip -r ../DaYePhotoStudio-2.zip DaYePhotoStudio-2
+          cd artifacts
+          mv models .u2net
+          zip -r ../models.zip .u2net
+
+      - name: 完整版压缩
+        run: |
+          mv artifacts/.u2net artifacts/DaYePhotoStudio-2/.u2net
+          cd artifacts && zip -r ../DaYePhotoStudio-2-full.zip DaYePhotoStudio-2
 
       - name: 发行
         uses: softprops/action-gh-release@v2
@@ -89,3 +121,5 @@ jobs:
           make_latest: true
           files: |
             DaYePhotoStudio-2.zip
+            DaYePhotoStudio-2-full.zip
+            models.zip
